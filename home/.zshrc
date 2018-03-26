@@ -5,11 +5,13 @@ autoload -Uz add-zsh-hook
 #  Environment Variables  #
 ###########################
 export GEM_HOME="$(/usr/bin/ruby -e 'print Gem.user_dir')"
+export PYENV_ROOT="$HOME/.pyenv"
 export GPG_TTY="$(tty)"
 export USE_POWERLINE=0
 
 typeset -U path
 path=(
+  "$PYENV_ROOT/bin"
   ~/.local/bin
   $path
   ~/.cargo/bin
@@ -19,6 +21,7 @@ path=(
 )
 
 source ~/.nix-profile/etc/profile.d/nix.sh
+eval "$(pyenv init -)"
 
 ###########################
 #  Aliases and Functions  #

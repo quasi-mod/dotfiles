@@ -7,10 +7,12 @@ esac
 #  Environment Variables  #
 ###########################
 export GEM_HOME="$(/usr/bin/ruby -e 'print Gem.user_dir')"
+export PYENV_ROOT="$HOME/.pyenv"
 export GPG_TTY="$(tty)"
 export USE_POWERLINE=0
 
 PATH="$HOME/.local/bin:$PATH"
+PATH="$PYENV_ROOT/bin:$PATH"
 PATH+=":$HOME/.cargo/bin"
 PATH+=":$GEM_HOME/bin"
 PATH+=":$(python3 -c 'import site; print(site.getuserbase())')/bin"
@@ -18,6 +20,7 @@ PATH+=":$GOPATH/bin"
 export PATH
 
 source ~/.nix-profile/etc/profile.d/nix.sh
+eval "$(pyenv init -)"
 
 ###########################
 #  Aliases and Functions  #
