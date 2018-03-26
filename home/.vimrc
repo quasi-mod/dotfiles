@@ -17,7 +17,7 @@ Plug 'w0rp/ale'
 Plug 'junegunn/fzf', {'dir': '~/.local/opt/fzf', 'do': '~/.local/libexec/fzf/install'}
 Plug 'junegunn/fzf.vim'
 Plug 'Valloric/YouCompleteMe', {
-  \ 'do': './install.py --clang-completer --tern-completer --racer-completer'}
+  \ 'do': './install.py --clang-completer'}
 Plug 'rdnetto/YCM-generator', {'branch': 'stable',
   \ 'on': ['YcmGenerateConfig', 'CCGenerateConfig']}
 Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
