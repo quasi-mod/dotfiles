@@ -6,11 +6,13 @@ autoload -Uz add-zsh-hook
 ###########################
 export CLICOLOR=1
 export GEM_HOME="$(/usr/local/bin/ruby -e 'print Gem.user_dir')"
+export PYENV_ROOT="$HOME/.pyenv"
 export GPG_TTY="$(tty)"
 export USE_POWERLINE=0
 
 typeset -U path
 path=(
+  "$PYENV_ROOT/bin"
   ~/.local/bin
   /usr/local/opt/python/libexec/bin
   /usr/local/sbin
@@ -20,6 +22,8 @@ path=(
   "$(python3 -c 'import site; print(site.getuserbase())')/bin"
   "$GOPATH/bin"
 )
+
+eval "$(pyenv init -)"
 
 ###########################
 #  Aliases and Functions  #
