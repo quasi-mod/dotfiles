@@ -42,6 +42,10 @@ Plug 'LnL7/vim-nix', {'for': 'nix'}
 Plug 'rust-lang/rust.vim', {'for': 'rust'}
 Plug 'lervag/vimtex', {'for': 'tex'}
 
+"  Markdown
+Plug 'godlygeek/tabular'
+Plug 'plasticboy/vim-markdown'
+
 " filetype plugin indent and syntax is handled by plug#end
 call plug#end()
 
@@ -123,7 +127,7 @@ set hlsearch
 set ignorecase
 set smartcase
 set wrapscan
-set tags=./tags;,tags
+set tags=./.tags;~
 
 """""""""""
 "  Cache  "
@@ -151,12 +155,17 @@ let maplocalleader="\<Space>\<Space>"
 nnoremap <Space> \
 xnoremap <Space> \
 
+" basic keybindings
+nnoremap ; :
+nnoremap j i
+inoremap jj <Esc>
+
 " a more logical mapping for Y
 nnoremap Y y$
 " break undo before deleting a whole line
 inoremap <C-u> <C-g>u<C-u>
 " a more powerful <C-l>
-nnoremap <silent> <Leader><C-l> :nohlsearch<CR>:call vimrc#refresh()<CR>
+nnoremap <silent> <Esc><Esc> :nohlsearch<CR>:call vimrc#refresh()<CR>
 
 " find merge conflict marker
 nnoremap <silent> <Leader>fc /\v^[<=>]{7}( .*<Bar>$)<CR>
@@ -181,9 +190,9 @@ xmap am <Plug>(textobj-sandwich-literal-query-a)
 omap am <Plug>(textobj-sandwich-literal-query-a)
 
 " toggles
-nnoremap <silent> <Leader>tf :NERDTreeToggle<CR>
+nnoremap <silent> <Leader>tn :NERDTreeToggle<CR>
 nnoremap <silent> <Leader>th :setlocal bufhidden! bufhidden?<CR>
-nnoremap <silent> <Leader>tl :ALEToggle<CR>
+nnoremap <silent> <Leader>tl :ALToggle<CR>
 nnoremap <silent> <Leader>ts :setlocal spell! spell?<CR>
 nnoremap <silent> <Leader>tt :TagbarToggle<CR>
 nnoremap <silent> <Leader>tu :UndotreeToggle<CR>
@@ -235,6 +244,11 @@ xmap s <Nop>
 nnoremap <silent> <LocalLeader>K :YcmCompleter GetDoc<CR>
 nnoremap <silent> <LocalLeader>[i :YcmCompleter GetType<CR>
 nnoremap <silent> <LocalLeader><C-]> :YcmCompleter GoTo<CR>
+
+" ctags
+noremap <Leader>[ <C-t>
+noremap <Leader>] <C-]>
+
 
 """"""""""
 "  Misc  "
@@ -298,3 +312,6 @@ let g:undotree_WindowLayout=2
 if has('gui_vimr')
   source ~/.config/nvim/ginit.vim
 endif
+
+" NerdTreeToggle"
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
