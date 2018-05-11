@@ -18,9 +18,23 @@ path=(
   $path
   ~/.cargo/bin
   "$GEM_HOME/bin"
-  "$(python3 -c 'import site; print(site.getuserbase())')/bin"
+  # "$(python3 -c 'import site; print(site.getuserbase())')/bin"
   "$GOPATH/bin"
 )
+
+###############
+# pyenv paths #
+###############
+export PYENV_ROOT="$HOME/.pyenv"
+export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init -)"
+
+################
+# Golang Paths #
+################
+export GOROOT=/usr/local/opt/go/libexec
+#export GOPATH=$HOME
+#export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
 
 ###########################
 #  Aliases and Functions  #
@@ -30,10 +44,12 @@ alias grep='grep --color=auto'
 alias fgrep='fgrep --color=auto'
 alias egrep='egrep --color=auto'
 alias ls='ls -F'
-alias ll='ls -lh'
-alias la='ls -lAh'
+alias ll='ls -l'
+alias la='ls -a'
 alias qlook='qlmanage -p'
 alias sudoedit='sudo -e'
+alias icloud='cd ~/Library/Mobile\ Documents/com~apple~CloudDocs'
+alias vim='nvim'
 autoload -Uz zmv
 autoload -Uz cd.. fuck
 autoload -Uz fzf-sel fzf-run fzf-loop fzf-gen
@@ -288,3 +304,26 @@ esac
 
 source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 ZSH_HIGHLIGHT_HIGHLIGHTERS+=(brackets)
+
+##################
+# zplug(plugins) #
+##################
+# install
+if [ ! -e $HOME/.zplug ] ; then
+    printf "Install zplug? [y/N]: "
+    if read -q; then
+        curl -sL --proto-redir -all,https https://raw.githubusercontent.com/zplug/installer/master/installer.zsh| zsh
+    fi
+fi
+
+source $HOME/.zplug/init.zsh
+
+zplug "b4b4r07/enhancd", use:init.sh
+
+# install plugin
+if ! zplug check ; then
+    zplug install
+fi
+
+# load plugin
+zplug load

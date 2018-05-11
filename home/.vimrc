@@ -42,6 +42,13 @@ Plug 'LnL7/vim-nix', {'for': 'nix'}
 Plug 'rust-lang/rust.vim', {'for': 'rust'}
 Plug 'lervag/vimtex', {'for': 'tex'}
 
+"  Markdown
+Plug 'godlygeek/tabular'
+Plug 'plasticboy/vim-markdown'
+
+"  vim auto save
+Plug 'vim-scripts/vim-auto-save'
+
 " filetype plugin indent and syntax is handled by plug#end
 call plug#end()
 
@@ -62,8 +69,9 @@ set fileencodings=ucs-bom,utf-8,iso-2022-jp,euc-jp,cp932,default,latin1
 set fileformats=unix,dos,mac
 set backspace=indent,eol,start
 set expandtab
-set shiftwidth=2
-set softtabstop=2
+set shiftwidth=4
+set softtabstop=4
+set tabstop=4
 set autoindent
 set formatoptions+=jmB
 
@@ -78,6 +86,12 @@ if !has('nvim') && has('patch-8.0.0238') && $TERM =~? 'screen'
   let &t_BE = "\<Esc>[?2004h"
   let &t_BD = "\<Esc>[?2004l"
   exec "set t_PS=\<ESC>[200~ | set t_PE=\<ESC>[201~"
+endif
+
+if has('nvim')
+    set clipboard=unnamedplus
+else
+    set clipboard=unnamed,autoselect,unnamedplus
 endif
 
 """"""""
@@ -123,7 +137,7 @@ set hlsearch
 set ignorecase
 set smartcase
 set wrapscan
-set tags=./tags;,tags
+set tags=./.tags;~
 
 """""""""""
 "  Cache  "
@@ -151,12 +165,17 @@ let maplocalleader="\<Space>\<Space>"
 nnoremap <Space> \
 xnoremap <Space> \
 
+" basic keybindings
+nnoremap ; :
+nnoremap j i
+inoremap jj <Esc>
+
 " a more logical mapping for Y
 nnoremap Y y$
 " break undo before deleting a whole line
 inoremap <C-u> <C-g>u<C-u>
 " a more powerful <C-l>
-nnoremap <silent> <Leader><C-l> :nohlsearch<CR>:call vimrc#refresh()<CR>
+nnoremap <silent> <Esc><Esc> :nohlsearch<CR>:call vimrc#refresh()<CR>
 
 " find merge conflict marker
 nnoremap <silent> <Leader>fc /\v^[<=>]{7}( .*<Bar>$)<CR>
@@ -181,7 +200,7 @@ xmap am <Plug>(textobj-sandwich-literal-query-a)
 omap am <Plug>(textobj-sandwich-literal-query-a)
 
 " toggles
-nnoremap <silent> <Leader>tf :NERDTreeToggle<CR>
+nnoremap <silent> <Leader>tn :NERDTreeToggle<CR>
 nnoremap <silent> <Leader>th :setlocal bufhidden! bufhidden?<CR>
 nnoremap <silent> <Leader>tl :ALEToggle<CR>
 nnoremap <silent> <Leader>ts :setlocal spell! spell?<CR>
@@ -196,9 +215,9 @@ imap <C-x><C-x><C-f> <Plug>(fzf-complete-path)
 imap <C-x><C-x><C-k> <Plug>(fzf-complete-word)
 imap <C-x><C-x><C-l> <Plug>(fzf-complete-line)
 inoremap <silent> <C-x><C-x><C-j> <Esc>:Snippets<CR>
-nnoremap <silent> <Leader>gf :Files<CR>
-nnoremap <silent> <Leader>gb :Buffers<CR>
-nnoremap <silent> <Leader>g/ :Lines<CR>
+nnoremap <silent> <Leader>fzf :Files<CR>
+nnoremap <silent> <Leader>fzb :Buffers<CR>
+nnoremap <silent> <Leader>fzl :Lines<CR>
 nnoremap <silent> <Leader>g<C-]> :Tags <C-r>=expand("<cword>")<CR><CR>
 nnoremap <silent> <Leader>q: :History:<CR>
 nnoremap <silent> <Leader>q/ :History/<CR>
@@ -235,6 +254,13 @@ xmap s <Nop>
 nnoremap <silent> <LocalLeader>K :YcmCompleter GetDoc<CR>
 nnoremap <silent> <LocalLeader>[i :YcmCompleter GetType<CR>
 nnoremap <silent> <LocalLeader><C-]> :YcmCompleter GoTo<CR>
+
+" ctags
+noremap <Leader>[ <C-t>
+noremap <Leader>] <C-]>
+
+"  tabs
+nnoremap nt :tabnew<CR>
 
 """"""""""
 "  Misc  "
@@ -276,7 +302,7 @@ let g:EasyMotion_use_migemo=1
 let g:EditorConfig_exclude_patterns=['fugitive://.*', '\(M\|m\|GNUm\)akefile']
 
 " UltiSnips "
-let g:UltiSnipsExpandTrigger='<C-x><C-j>'
+let g:UltiSnipsExpandTrigger='<C-x>x'
 
 " YouCompleteMe "
 let g:ycm_key_list_select_completion=[]
@@ -298,3 +324,10 @@ let g:undotree_WindowLayout=2
 if has('gui_vimr')
   source ~/.config/nvim/ginit.vim
 endif
+
+" NerdTreeToggle "
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+
+"  auto save
+" vim-auto-save
+let g:auto_save = 1  " enable AutoSave on Vim startup
