@@ -46,10 +46,12 @@ alias egrep='egrep --color=auto'
 alias ls='ls -F'
 alias ll='ls -l'
 alias la='ls -a'
+alias lla='ls -l -a'
 alias qlook='qlmanage -p'
 alias sudoedit='sudo -e'
 alias icloud='cd ~/Library/Mobile\ Documents/com~apple~CloudDocs'
 alias vim='nvim'
+alias ppandoc='pandoc -s --variable geometry="margin=0.9in" --variable mainfont="Palatino" --variable sansfont="Helvetica" --variable monofont="Menlo" --variable fontsize=12pt'
 autoload -Uz zmv
 autoload -Uz cd.. fuck
 autoload -Uz fzf-sel fzf-run fzf-loop fzf-gen

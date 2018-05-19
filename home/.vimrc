@@ -145,7 +145,8 @@ set tags=./.tags;~
 if !has('nvim')
   set viminfo+=n~/Library/Caches/vim/viminfo
 endif
-set dir=~/Library/Caches/vim/swap
+"set dir=~/Library/Caches/vim/swap
+set noswapfile
 set backup
 set backupdir=~/Library/Caches/vim/backup
 set undofile
