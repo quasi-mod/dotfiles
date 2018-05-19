@@ -66,8 +66,9 @@ set fileencodings=ucs-bom,utf-8,iso-2022-jp,euc-jp,cp932,default,latin1
 set fileformats=unix,dos,mac
 set backspace=indent,eol,start
 set expandtab
-set shiftwidth=2
-set softtabstop=2
+set shiftwidth=4
+set softtabstop=4
+set tabstop=4
 set autoindent
 set formatoptions+=jmB
 
