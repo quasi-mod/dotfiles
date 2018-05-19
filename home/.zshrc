@@ -1,36 +1,57 @@
-fpath+=(~/.local/share/zsh/site-functions)
+fpath+=(~/.local/share/zsh/site-functions /usr/local/share/zsh-completions)
 autoload -Uz add-zsh-hook
 autoload -Uz is-at-least
 
 ###########################
 #  Environment Variables  #
 ###########################
-export GEM_HOME="$(/usr/bin/ruby -e 'print Gem.user_dir')"
+export CLICOLOR=1
+export GEM_HOME="$(/usr/local/bin/ruby -e 'print Gem.user_dir')"
 export GPG_TTY="$(tty)"
 export USE_POWERLINE=0
 
 typeset -U path
 path=(
   ~/.local/bin
+  /usr/local/opt/python/libexec/bin
+  /usr/local/sbin
   $path
   ~/.cargo/bin
   "$GEM_HOME/bin"
-  "$(python3 -c 'import site; print(site.getuserbase())')/bin"
+  # "$(python3 -c 'import site; print(site.getuserbase())')/bin"
   "$GOPATH/bin"
 )
 
-source ~/.nix-profile/etc/profile.d/nix.sh
+###############
+# pyenv paths #
+###############
+export PYENV_ROOT="$HOME/.pyenv"
+export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init -)"
+
+################
+# Golang Paths #
+################
+export GOROOT=/usr/local/opt/go/libexec
+#export GOPATH=$HOME
+#export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
 
 ###########################
 #  Aliases and Functions  #
 ###########################
+unalias run-help
 alias grep='grep --color=auto'
 alias fgrep='fgrep --color=auto'
 alias egrep='egrep --color=auto'
-alias ls='ls -F --color=auto'
-alias ll='ls -lh'
-alias la='ls -lAh'
-alias xmonad-replace='nohup xmonad --replace &> /dev/null &'
+alias ls='ls -F'
+alias ll='ls -l'
+alias la='ls -a'
+alias lla='ls -l -a'
+alias qlook='qlmanage -p'
+alias sudoedit='sudo -e'
+alias icloud='cd ~/Library/Mobile\ Documents/com~apple~CloudDocs'
+alias vim='nvim'
+alias ppandoc='pandoc -s --variable geometry="margin=0.9in" --variable mainfont="Palatino" --variable sansfont="Helvetica" --variable monofont="Menlo" --variable fontsize=12pt'
 autoload -Uz zmv
 autoload -Uz cd.. fuck
 autoload -Uz fzf-sel fzf-run fzf-loop fzf-gen
@@ -175,11 +196,8 @@ if is-at-least 5.2; then
     zle -N bracketed-paste bracketed-paste-url-magic
 fi
 
-command -v lesspipe >/dev/null 2>&1 && eval "$(SHELL=/bin/sh lesspipe)"
-source /etc/zsh_command_not_found
-
-# Tell libvte terminals the working directory
-if (( ${VTE_VERSION:-0} >= 3405 )); then
+# Tell Apple Terminal the working directory
+if [[ "$TERM_PROGRAM" == "Apple_Terminal" ]] && [[ -z "$INSIDE_EMACS" ]]; then
   __vte_urlencode() {
     # Use LC_CTYPE=C to process text byte-by-byte.
     local LC_CTYPE=C LC_ALL= _raw_url="$1" _safe_url="" _safe
@@ -199,6 +217,7 @@ if (( ${VTE_VERSION:-0} >= 3405 )); then
     printf "\e]7;file://%s%s\a" "$HOST" "$(__vte_urlencode "$PWD")"
   }
   add-zsh-hook precmd __vte_osc7
+  __vte_osc7
 fi
 
 ###########
@@ -206,7 +225,7 @@ fi
 ###########
 setopt prompt_subst
 
-[[ -z "$DISPLAY$WAYLAND_DISPLAY$SSH_CONNECTION" ]] && USE_POWERLINE=0
+[[ -z "$TERM_PROGRAM" ]] && USE_POWERLINE=0
 
 if [[ "$TERM" == "dumb" ]]; then
   PROMPT="%n: %~%# "
@@ -252,7 +271,9 @@ __update_term() {
   if [[ -n "$SSH_CONNECTION" ]]; then
     print -Pn "\e]0;%m: %1~\a"
   else
-    print -Pn "\e]0;%1~\a"
+    local title=""
+    [[ "$TERM_PROGRAM" != "Apple_Terminal" ]] && title="%1~"
+    print -Pn "\e]0;$title\a"
   fi
 
   if zstyle -T ':iterm2:osc' enable; then
@@ -283,5 +304,28 @@ case "$TERM" in
     ;;
 esac
 
-source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 ZSH_HIGHLIGHT_HIGHLIGHTERS+=(brackets)
+
+##################
+# zplug(plugins) #
+##################
+# install
+if [ ! -e $HOME/.zplug ] ; then
+    printf "Install zplug? [y/N]: "
+    if read -q; then
+        curl -sL --proto-redir -all,https https://raw.githubusercontent.com/zplug/installer/master/installer.zsh| zsh
+    fi
+fi
+
+source $HOME/.zplug/init.zsh
+
+zplug "b4b4r07/enhancd", use:init.sh
+
+# install plugin
+if ! zplug check ; then
+    zplug install
+fi
+
+# load plugin
+zplug load

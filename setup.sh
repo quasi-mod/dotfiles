@@ -1,7 +1,7 @@
 #!/bin/bash
 
 DOTFILE_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-[[ -z "$DOTFILE_DIR" ]] && DOTFILE_DIR=~/.config/dotfiles
+[[ -z "$DOTFILE_DIR" ]] && DOTFILE_DIR=~/Library/dotfiles
 
 main() {
   local install_deps=""
@@ -39,13 +39,11 @@ main() {
 setup::shell() {
   install::default ".bash_profile"
   install::default ".bashrc"
-  install::default ".bash_logout"
   install::default ".zshenv"
   install::default ".zshrc"
-  install::default ".zlogout"
   install::default ".inputrc"
   install::default ".config/shell/snippets/common.snip"
-  install::default ".config/shell/snippets/linux.snip"
+  install::default ".config/shell/snippets/macos.snip"
   install::default ".config/shell/templates"
   install::default ".config/shell/templates.csv"
   install::default ".local/share/zsh/site-functions"
@@ -58,6 +56,24 @@ setup::vim() {
   install::default ".config/nvim"
   curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+
+  local mvim_dir=/usr/local/bin
+  local old_pwd="$(pwd)"
+  cd "$mvim_dir"
+  if [[ -x "$mvim_dir/mvim" ]]; then
+    ln -s mvim vi
+    ln -s mvim view
+    ln -s mvim vim
+    ln -s mvim vimdiff
+    ln -s mvim vimex
+  else
+    [[ -e vi ]] || rm vi
+    [[ -e view ]] || rm view
+    [[ -e vim ]] || rm vim
+    [[ -e vimdiff ]] || rm vimdiff
+    [[ -e vimex ]] || rm vimex
+  fi
+  cd "$old_pwd"
 }
 
 setup::gpg() {
@@ -70,34 +86,31 @@ setup::gpg() {
   chmod 600 "$DOTFILE_DIR/home/.gnupg/gpg.conf"
   install::default ".gnupg/gpg-agent.conf"
   install::default ".gnupg/gpg.conf"
+  install::default "Library/LaunchAgents/org.gnupg.gpg-agent.plist"
 }
 
 setup::misc() {
   install::default ".clang-format"
   install::default ".config/git/config"
   install::default ".config/git/ignore"
-  install::default ".config/nano/nanorc"
   install::default ".config/ranger/rc.conf"
   install::default ".config/ranger/scope.sh"
   install::default ".config/tig/config"
   install::default ".config/zathura/zathurarc"
   install::default ".ipython/profile_default/ipython_config.py"
-  install::default ".local/libexec/fzf/install"
+  install::default ".local/bin/rmpkg"
+  install::default ".local/bin/imgcat"
   install::default ".local/opt/fzftools"
   install::default ".mikutter/plugin"
-  install::default ".nixpkgs/config.nix"
+  install::default ".nanorc"
   install::default ".screenrc"
   install::default ".tern-config"
   install::default ".tmux.conf"
   install::default ".wgetrc"
-  install::default ".xprofile"
-  install::default ".xmonad"
 
-  # gdb
-  install::default ".gdbinit"
-  install::default ".local/bin/gef"
-  install::default ".local/bin/peda"
-  install::default ".local/bin/pwndbg"
+  # gtk
+  install::default ".gtkrc-2.0"
+  install::default ".themes/zuki-themes"
 
   # LaTeX
   install::default ".config/latexmk/latexmkrc"
@@ -109,20 +122,20 @@ setup::misc() {
   install::default ".spacemacs"
 
   # vscode
-  install::default ".config/Code/User/settings.json"
-  chmod 700 ~/.config/Code
+  install::default "Library/Application Support/Code/User/settings.json"
+  chmod 700 ~/Library/Application\ Support/Code
 }
 
-setup::deps() {
-  sudo apt-get update
-  sudo apt-get install -y \
-    build-essential \
+setup::plugins() {
+  brew update
+  brew install \
     cmake \
     cmigemo \
-    npm \
-    nodejs \
+    fzf \
+    node \
+    ripgrep \
+    zsh-completions \
     zsh-syntax-highlighting
-  sudo ln -s /usr/bin/nodejs /usr/local/bin/node
   curl https://sh.rustup.rs -sSf | sh
 
   vim +PlugInstall +qall

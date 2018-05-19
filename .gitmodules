@@ -1,3 +1,7 @@
+[submodule "home/.themes/zuki-themes"]
+	path = home/.themes/zuki-themes
+	url = https://github.com/lassekongo83/zuki-themes.git
+	ignore = all
 [submodule "home/.mikutter/plugin/mikutter-uwm-hommage"]
 	path = home/.mikutter/plugin/mikutter-uwm-hommage
 	url = https://github.com/moguno/mikutter-uwm-hommage.git
@@ -10,26 +14,9 @@
 	path = home/.mikutter/plugin/mikutter-subparts-image
 	url = https://github.com/moguno/mikutter-subparts-image.git
 	ignore = all
-[submodule "home/.mikutter/plugin/mikutter-okaeri"]
-	path = home/.mikutter/plugin/mikutter-okaeri
-	url = https://github.com/moguno/mikutter-okaeri.git
-	ignore = all
-[submodule "home/.mikutter/plugin/pulseaudio"]
-	path = home/.mikutter/plugin/pulseaudio
-	url = https://github.com/toshia/mikutter-pulseaudio.git
-	ignore = all
-[submodule "home/.local/opt/peda"]
-	path = home/.local/opt/peda
-	url = https://github.com/longld/peda.git
-	ignore = all
-[submodule "home/.local/opt/pwndbg"]
-	path = home/.local/opt/pwndbg
-	url = https://github.com/pwndbg/pwndbg.git
-	branch = dev
-	ignore = all
-[submodule "home/.local/opt/gef"]
-	path = home/.local/opt/gef
-	url = https://github.com/hugsy/gef.git
+[submodule "home/.mikutter/plugin/mikutter-mac"]
+	path = home/.mikutter/plugin/mikutter-mac
+	url = https://github.com/midchildan/mikutter-mac.git
 	ignore = all
 [submodule "home/.local/opt/fzftools"]
 	path = home/.local/opt/fzftools

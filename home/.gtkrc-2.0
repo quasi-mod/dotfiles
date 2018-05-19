@@ -1,0 +1,2 @@
+include ".themes/zuki-themes/Zukitre/gtk-2.0/gtkrc"
+include "/usr/local/share/themes/Mac/gtk-2.0-key"

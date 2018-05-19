@@ -6,7 +6,6 @@ escape ^Zz
 verbose on
 autodetach on
 ignorecase on
-term xterm-256color
 defflow off
 
 ############
