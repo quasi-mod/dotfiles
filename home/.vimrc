@@ -46,6 +46,9 @@ Plug 'lervag/vimtex', {'for': 'tex'}
 Plug 'godlygeek/tabular'
 Plug 'plasticboy/vim-markdown'
 
+"  vim auto save
+Plug 'vim-scripts/vim-auto-save'
+
 " filetype plugin indent and syntax is handled by plug#end
 call plug#end()
 
@@ -66,8 +69,9 @@ set fileencodings=ucs-bom,utf-8,iso-2022-jp,euc-jp,cp932,default,latin1
 set fileformats=unix,dos,mac
 set backspace=indent,eol,start
 set expandtab
-set shiftwidth=2
-set softtabstop=2
+set shiftwidth=4
+set softtabstop=4
+set tabstop=4
 set autoindent
 set formatoptions+=jmB
 
@@ -82,6 +86,12 @@ if !has('nvim') && has('patch-8.0.0238') && $TERM =~? 'screen'
   let &t_BE = "\<Esc>[?2004h"
   let &t_BD = "\<Esc>[?2004l"
   exec "set t_PS=\<ESC>[200~ | set t_PE=\<ESC>[201~"
+endif
+
+if has('nvim')
+    set clipboard=unnamedplus
+else
+    set clipboard=unnamed,autoselect,unnamedplus
 endif
 
 """"""""
@@ -135,7 +145,8 @@ set tags=./.tags;~
 if !has('nvim')
   set viminfo+=n~/Library/Caches/vim/viminfo
 endif
-set dir=~/Library/Caches/vim/swap
+"set dir=~/Library/Caches/vim/swap
+set noswapfile
 set backup
 set backupdir=~/Library/Caches/vim/backup
 set undofile
@@ -205,9 +216,9 @@ imap <C-x><C-x><C-f> <Plug>(fzf-complete-path)
 imap <C-x><C-x><C-k> <Plug>(fzf-complete-word)
 imap <C-x><C-x><C-l> <Plug>(fzf-complete-line)
 inoremap <silent> <C-x><C-x><C-j> <Esc>:Snippets<CR>
-nnoremap <silent> <Leader>gf :Files<CR>
-nnoremap <silent> <Leader>gb :Buffers<CR>
-nnoremap <silent> <Leader>g/ :Lines<CR>
+nnoremap <silent> <Leader>fzf :Files<CR>
+nnoremap <silent> <Leader>fzb :Buffers<CR>
+nnoremap <silent> <Leader>fzl :Lines<CR>
 nnoremap <silent> <Leader>g<C-]> :Tags <C-r>=expand("<cword>")<CR><CR>
 nnoremap <silent> <Leader>q: :History:<CR>
 nnoremap <silent> <Leader>q/ :History/<CR>
@@ -249,6 +260,11 @@ nnoremap <silent> <LocalLeader><C-]> :YcmCompleter GoTo<CR>
 noremap <Leader>[ <C-t>
 noremap <Leader>] <C-]>
 
+<<<<<<< HEAD
+=======
+"  tabs
+nnoremap nt :tabnew<CR>
+>>>>>>> local
 
 """"""""""
 "  Misc  "
@@ -290,7 +306,7 @@ let g:EasyMotion_use_migemo=1
 let g:EditorConfig_exclude_patterns=['fugitive://.*', '\(M\|m\|GNUm\)akefile']
 
 " UltiSnips "
-let g:UltiSnipsExpandTrigger='<C-x><C-j>'
+let g:UltiSnipsExpandTrigger='<C-x>x'
 
 " YouCompleteMe "
 let g:ycm_key_list_select_completion=[]
@@ -313,5 +329,14 @@ if has('gui_vimr')
   source ~/.config/nvim/ginit.vim
 endif
 
+<<<<<<< HEAD
 " NerdTreeToggle"
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+=======
+" NerdTreeToggle "
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+
+"  auto save
+" vim-auto-save
+let g:auto_save = 1  " enable AutoSave on Vim startup
+>>>>>>> local
