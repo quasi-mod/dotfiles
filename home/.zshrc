@@ -6,7 +6,7 @@ autoload -Uz is-at-least
 #  Environment Variables  #
 ###########################
 export CLICOLOR=1
-export GEM_HOME="$(/usr/local/bin/ruby -e 'print Gem.user_dir')"
+# export GEM_HOME="$(/usr/local/bin/ruby -e 'print Gem.user_dir')"
 export GPG_TTY="$(tty)"
 export USE_POWERLINE=0
 
@@ -329,3 +329,6 @@ fi
 
 # load plugin
 zplug load
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+export PYTHONPATH=/home/keitasuzuki/Documents/gpfn/dlchip-aics/apps/..:/home/keitasuzuki/Documents/gpfn/dlchip-aics/apps/../assembler
