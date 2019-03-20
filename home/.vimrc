@@ -14,7 +14,7 @@ Plug 'easymotion/vim-easymotion', {'on': [
 
 " completion and linting
 Plug 'w0rp/ale'
-Plug '/usr/local/opt/fzf' | Plug 'junegunn/fzf.vim'
+Plug '/usr/local/opt/fzf' | Plug 'junegunn/fzf.vim' | Plug '~/.fzf'
 Plug 'Valloric/YouCompleteMe', {
   \ 'do': './install.py --clang-completer'}
 Plug 'rdnetto/YCM-generator', {'branch': 'stable',
@@ -48,6 +48,9 @@ Plug 'plasticboy/vim-markdown'
 
 "  vim auto save
 Plug 'vim-scripts/vim-auto-save'
+
+"  vim indentline
+Plug 'Yggdroot/indentLine'
 
 " filetype plugin indent and syntax is handled by plug#end
 call plug#end()
@@ -263,6 +266,19 @@ noremap <Leader>] <C-]>
 "  tabs
 nnoremap nt :tabnew<CR>
 
+"  splitviews
+nnoremap <Leader>sn :split<CR>
+nnoremap <Leader>sN :vsplit<CR>
+nnoremap <Leader>ss <C-w>j
+nnoremap <Leader>sa <C-w>h
+nnoremap <Leader>sw <C-W>k
+nnoremap <Leader>sd <C-W>l
+
+"  cursor moves
+nnoremap <C-a> h
+nnoremap <C-s> j
+nnoremap <C-w> k
+nnoremap <C-d> l
 """"""""""
 "  Misc  "
 """"""""""
