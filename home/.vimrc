@@ -14,7 +14,7 @@ Plug 'easymotion/vim-easymotion', {'on': [
 
 " completion and linting
 Plug 'w0rp/ale'
-Plug '/usr/local/opt/fzf' | Plug 'junegunn/fzf.vim' | Plug '~/.fzf'
+Plug '~/.fzf' | Plug 'junegunn/fzf.vim'
 Plug 'Valloric/YouCompleteMe', {
   \ 'do': './install.py --clang-completer'}
 Plug 'rdnetto/YCM-generator', {'branch': 'stable',
@@ -30,6 +30,10 @@ Plug 'majutsushi/tagbar'
 Plug 'scrooloose/nerdtree', {'on': 'NERDTreeToggle'}
 Plug 'mbbill/undotree', {'on': 'UndotreeToggle'}
 Plug 'vim-airline/vim-airline' | Plug 'vim-airline/vim-airline-themes'
+Plug 'ctrlpvim/ctrlp.vim'
+Plug 'Shougo/vimshell.vim'
+Plug 'Shougo/deol.nvim'
+Plug 'Shougo/vimproc.vim', {'do' : 'make'}
 
 " colorschemes
 Plug 'tomasr/molokai'
@@ -49,8 +53,7 @@ Plug 'plasticboy/vim-markdown'
 "  vim auto save
 Plug 'vim-scripts/vim-auto-save'
 
-"  vim indentline
-Plug 'Yggdroot/indentLine'
+Plug 'apple/swift-completion', {'for': 'swift'}
 
 " filetype plugin indent and syntax is handled by plug#end
 call plug#end()
@@ -220,6 +223,7 @@ imap <C-x><C-x><C-k> <Plug>(fzf-complete-word)
 imap <C-x><C-x><C-l> <Plug>(fzf-complete-line)
 inoremap <silent> <C-x><C-x><C-j> <Esc>:Snippets<CR>
 nnoremap <silent> <Leader>fzf :Files<CR>
+nnoremap <silent> <Leader>ffcp :Files <C-R>"<CR>
 nnoremap <silent> <Leader>fzb :Buffers<CR>
 nnoremap <silent> <Leader>fzl :Lines<CR>
 nnoremap <silent> <Leader>g<C-]> :Tags <C-r>=expand("<cword>")<CR><CR>
@@ -266,7 +270,7 @@ noremap <Leader>] <C-]>
 "  tabs
 nnoremap nt :tabnew<CR>
 
-"  splitviews
+"  spliviews
 nnoremap <Leader>sn :split<CR>
 nnoremap <Leader>sN :vsplit<CR>
 nnoremap <Leader>ss <C-w>j
@@ -279,6 +283,12 @@ nnoremap <C-a> h
 nnoremap <C-s> j
 nnoremap <C-w> k
 nnoremap <C-d> l
+
+if has('nvim')
+    tnoremap j i
+    tnoremap jj <C-\><C-n>
+endif
+
 """"""""""
 "  Misc  "
 """"""""""
@@ -298,10 +308,14 @@ if s:has_rg
 endif
 
 " FZF "
+let g:fzf_action = {
+  \ 'enter': 'vsplit'}
 command! -bang Compilers
   \ call vimrc#fzf_compilers(0, <bang>0)
 command! -bang BCompilers
   \ call vimrc#fzf_compilers(1, <bang>0)
+command! -bang -nargs=? -complete=dir Files
+  \ call fzf#vim#files(<q-args>, fzf#vim#with_preview(), <bang>0)
 if s:has_rg
   command! -bang -nargs=* Grep
     \ call fzf#vim#grep('rg --vimgrep --color=always '.shellescape(<q-args>), 1, <bang>0)
@@ -309,6 +323,8 @@ else
   command! -bang -nargs=* Grep
     \ call fzf#vim#grep('grep -r --line-number '.shellescape(<q-args>).' *', 0, <bang>0)
 endif
+
+
 
 " EasyMotion"
 let g:EasyMotion_do_mapping=0
