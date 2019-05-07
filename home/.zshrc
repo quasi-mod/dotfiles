@@ -13,6 +13,7 @@ export USE_POWERLINE=0
 typeset -U path
 path=(
   ~/.local/bin
+  /usr/local/bin
   /usr/local/opt/python/libexec/bin
   /usr/local/sbin
   $path
@@ -35,6 +36,9 @@ eval "$(pyenv init -)"
 export GOROOT=/usr/local/opt/go/libexec
 #export GOPATH=$HOME
 #export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
+
+## Basictex
+export PATH=$PATH:/usr/local/texlive/2018basic/bin/x86_64-darwin
 
 ###########################
 #  Aliases and Functions  #
@@ -306,6 +310,40 @@ esac
 
 source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 ZSH_HIGHLIGHT_HIGHLIGHTERS+=(brackets)
+
+# function powerline_precmd() {
+#     PS1="$(powerline-shell --shell zsh $?)"
+# }
+
+# function install_powerline_precmd() {
+#   for s in "${precmd_functions[@]}"; do
+#     if [ "$s" = "powerline_precmd" ]; then
+#       return
+#     fi
+#   done
+#   precmd_functions+=(powerline_precmd)
+# }
+
+# if [ "$TERM" != "linux" ]; then
+#     install_powerline_precmd
+# fi
+
+function powerline_precmd() {
+    PS1="$($GOPATH/bin/powerline-go -cwd-max-depth 3 -error $? -shell zsh)"
+}
+
+function install_powerline_precmd() {
+  for s in "${precmd_functions[@]}"; do
+    if [ "$s" = "powerline_precmd" ]; then
+      return
+    fi
+  done
+  precmd_functions+=(powerline_precmd)
+}
+
+if [ "$TERM" != "linux" ]; then
+    install_powerline_precmd
+fi
 
 ##################
 # zplug(plugins) #

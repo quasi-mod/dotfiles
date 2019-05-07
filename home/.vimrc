@@ -14,7 +14,7 @@ Plug 'easymotion/vim-easymotion', {'on': [
 
 " completion and linting
 Plug 'w0rp/ale'
-Plug '~/.fzf' | Plug 'junegunn/fzf.vim'
+Plug '~/usr/local/opt/fzf' | Plug 'junegunn/fzf.vim'
 Plug 'Valloric/YouCompleteMe', {
   \ 'do': './install.py --clang-completer'}
 Plug 'rdnetto/YCM-generator', {'branch': 'stable',
@@ -293,6 +293,10 @@ endif
 "  Misc  "
 """"""""""
 let g:tex_flavor='latex'
+autocmd FileType tex setlocal spell spelllang=en_us
+
+filetype plugin indent on
+syntax on
 
 " See :h :DiffOrig
 command! DiffOrig vert new | set bt=nofile | r ++edit # | 0d_ | diffthis
@@ -346,6 +350,7 @@ let g:ycm_rust_src_path='~/.rustup/toolchains/stable-x86_64-apple-darwin/lib/rus
 
 " airline "
 let g:airline_skip_empty_sections=1
+" let g:airline_left_sep = '>'
 if $USE_POWERLINE
   let g:airline_powerline_fonts=1
 endif
