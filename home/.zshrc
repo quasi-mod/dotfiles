@@ -43,7 +43,7 @@ export PATH=$PATH:/usr/local/texlive/2018basic/bin/x86_64-darwin
 ###########################
 #  Aliases and Functions  #
 ###########################
-unalias run-help
+# unalias run-help
 alias grep='grep --color=auto'
 alias fgrep='fgrep --color=auto'
 alias egrep='egrep --color=auto'
@@ -329,7 +329,7 @@ ZSH_HIGHLIGHT_HIGHLIGHTERS+=(brackets)
 # fi
 
 function powerline_precmd() {
-    PS1="$($GOPATH/bin/powerline-go -cwd-max-depth 3 -error $? -shell zsh)"
+    PS1="$($GOPATH/bin/powerline-go -colorize-hostname -cwd-max-depth 3 -modules "venv,host,ssh,cwd,perms,git" -error $? -shell zsh)"
 }
 
 function install_powerline_precmd() {
