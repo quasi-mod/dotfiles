@@ -3,18 +3,91 @@
     "telemetry.enableTelemetry": false,
     "telemetry.enableCrashReporter": false,
 
-    "editor.tabSize": 2,
-    "editor.insertSpaces": true,
+    "editor.tabSize": 4,
     "editor.detectIndentation": true,
-    "editor.minimap.enabled": true,
+    "editor.minimap.enabled": false,
     "editor.minimap.renderCharacters": false,
     "editor.renderIndentGuides": true,
+    "editor.fontSize":16,
+    "terminal.integrated.fontSize": 16,
     "workbench.colorTheme": "Monokai",
+    "editor.wordWrap": "on",
+    "files.trimTrailingWhitespace": true,
 
     "[cpp]": {
-        "editor.quickSuggestions": false
+        "editor.quickSuggestions": true
     },
     "[c]": {
-        "editor.quickSuggestions": false
-    }
+        "editor.quickSuggestions": true
+    },
+    "window.zoomLevel": 0,
+    "vim.leader": "<space>",
+    "vim.camelCaseMotion.enable": true,
+    "vim.easymotion": true,
+    "vim.useSystemClipboard": true,
+    "vim.hlsearch": true,
+    "vim.visualstar": true,
+    "vim.statusBarColorControl": true,
+    "vim.useCtrlKeys": true,
+    "vim.statusBarColors.normal": "#F16C2A",
+    "vim.statusBarColors.insert": "#0758DE",
+    "vim.statusBarColors.visual": "#92D67D",
+    "vim.statusBarColors.visualline": "#92D67D",
+    "vim.statusBarColors.visualblock": "#92D67D",
+    "vim.statusBarColors.replace": "#B4435",
+    "vim.insertModeKeyBindings": [
+        {
+            "before": ["j", "j"],
+            "after": ["<Esc>"]
+        }
+    ],
+    "vim.normalModeKeyBindings":[
+        {
+            "before": ["j"],
+            "after": ["i"]
+        },
+        {
+            "before": [";"],
+            "after": [":"]
+        },
+        {
+            "before":["<Esc>"],
+            "commands": [":nohl"]
+        },
+    ],
+    "vim.visualModeKeyBindingsNonRecursive": [
+        {
+            "before": [">"],
+            "commands": ["editor.action.indentLines"]
+        },
+        {
+            "before": ["<"],
+            "commands": ["editor.action.outdentLines"]
+        },
+    ],
+    "workbench.colorCustomizations": {
+        "statusBar.background": "#F16C2A",
+        "statusBar.noFolderBackground": "#F16C2A",
+        "statusBar.debuggingBackground": "#F16C2A"
+    },
+    "workbench.tips.enabled": false,
+    "terminal.explorerKind": "external",
+    "terminal.external.osxExec": "iTerm.app",
+    "terminal.integrated.shell.linux": "/bin/zsh",
+    "vim.highlightedyank.enable": true,
+    "vim.highlightedyank.color": "rgb(230, 127, 110,0.7)",
+    "workbench.startupEditor": "newUntitledFile",
+    "editor.renderWhitespace": "boundary",
+    "workbench.activityBar.visible": false,
+    "workbench.iconTheme": "vscode-icons",
+    "workbench.statusBar.feedback.visible": false,
+    "workbench.list.keyboardNavigation": "simple",
+    "macros": {
+        "focusFiles": [
+            "workbench.action.focusSideBar",
+            "outline.focus"
+        ]
+    },
+    "sync.gist": "f1e8a2b78c37dc3bc8166ab95c140971",
+    "editor.lineNumbers": "relative"
 }
