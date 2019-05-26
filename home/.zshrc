@@ -311,6 +311,7 @@ esac
 source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 ZSH_HIGHLIGHT_HIGHLIGHTERS+=(brackets)
 
+source /usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 # function powerline_precmd() {
 #     PS1="$(powerline-shell --shell zsh $?)"
 # }
@@ -329,7 +330,7 @@ ZSH_HIGHLIGHT_HIGHLIGHTERS+=(brackets)
 # fi
 
 function powerline_precmd() {
-    PS1="$($GOPATH/bin/powerline-go -colorize-hostname -cwd-max-depth 3 -modules "venv,host,ssh,cwd,perms,git" -error $? -shell zsh)"
+    PS1="$($GOPATH/bin/powerline-go -colorize-hostname -cwd-max-depth 3 -modules "venv,ssh,cwd,perms,git" -error $? -shell zsh)"
 }
 
 function install_powerline_precmd() {

@@ -269,14 +269,19 @@ noremap <Leader>] <C-]>
 
 "  tabs
 nnoremap nt :tabnew<CR>
+nnoremap sD gt
+nnoremap sA gT
 
 "  spliviews
 nnoremap <Leader>sn :split<CR>
 nnoremap <Leader>sN :vsplit<CR>
-nnoremap <Leader>ss <C-w>j
-nnoremap <Leader>sa <C-w>h
-nnoremap <Leader>sw <C-W>k
-nnoremap <Leader>sd <C-W>l
+nnoremap ss <C-w>j
+nnoremap sa <C-w>h
+nnoremap sw <C-W>k
+nnoremap sd <C-W>l
+nnoremap s> <C-w>>
+nnoremap s< <C-w><
+
 
 "  cursor moves
 nnoremap <C-a> h
