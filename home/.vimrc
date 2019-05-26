@@ -14,7 +14,7 @@ Plug 'easymotion/vim-easymotion', {'on': [
 
 " completion and linting
 Plug 'w0rp/ale'
-Plug '~/usr/local/opt/fzf' | Plug 'junegunn/fzf.vim'
+Plug '~/.fzf' | Plug 'junegunn/fzf.vim'
 Plug 'Valloric/YouCompleteMe', {
   \ 'do': './install.py --clang-completer'}
 Plug 'rdnetto/YCM-generator', {'branch': 'stable',
@@ -116,6 +116,7 @@ set showmatch
 set wildmenu
 set title
 set mouse=a
+set rnu
 
 " colors
 if $TERM =~? '.*-256color' && $TERM_PROGRAM !=? 'Apple_Terminal'
@@ -209,7 +210,7 @@ omap am <Plug>(textobj-sandwich-literal-query-a)
 " toggles
 nnoremap <silent> <Leader>tn :NERDTreeToggle<CR>
 nnoremap <silent> <Leader>th :setlocal bufhidden! bufhidden?<CR>
-nnoremap <silent> <Leader>tl :ALToggle<CR>
+nnoremap <silent> <Leader>tl :ALEToggle<CR>
 nnoremap <silent> <Leader>ts :setlocal spell! spell?<CR>
 nnoremap <silent> <Leader>tt :TagbarToggle<CR>
 nnoremap <silent> <Leader>tu :UndotreeToggle<CR>
@@ -231,17 +232,17 @@ nnoremap <silent> <Leader>q: :History:<CR>
 nnoremap <silent> <Leader>q/ :History/<CR>
 nnoremap <silent> <Leader>' :Marks<CR>
 nnoremap <silent> <Leader>/ :BLines<CR>
-nnoremap <silent> <Leader>: :Commands<CR>
+nnoremap <silent> <Leader>; :Commands<CR>
 nnoremap <silent> <Leader><C-o> :History<CR>
 nnoremap <silent> <Leader><C-]> :BTags <C-r>=expand("<cword>")<CR><CR>
 
 " easymotion
-nmap <Leader>j <Plug>(easymotion-j)
-xmap <Leader>j <Plug>(easymotion-j)
-omap <Leader>j <Plug>(easymotion-j)
-nmap <Leader>k <Plug>(easymotion-k)
-xmap <Leader>k <Plug>(easymotion-k)
-omap <Leader>k <Plug>(easymotion-k)
+nmap <Leader><C-s> <Plug>(easymotion-j)
+xmap <Leader><C-s> <Plug>(easymotion-j)
+omap <Leader><C-s> <Plug>(easymotion-j)
+nmap <Leader><C-d> <Plug>(easymotion-k)
+xmap <Leader><C-d> <Plug>(easymotion-k)
+omap <Leader><C-d> <Plug>(easymotion-k)
 nmap <Leader>s <Plug>(easymotion-s2)
 xmap <Leader>s <Plug>(easymotion-s2)
 omap <Leader>s <Plug>(easymotion-s2)
@@ -268,13 +269,13 @@ noremap <Leader>[ <C-t>
 noremap <Leader>] <C-]>
 
 "  tabs
-nnoremap nt :tabnew<CR>
+nnoremap <Leader><C-t> :tabnew<CR>
 nnoremap sD gt
 nnoremap sA gT
 
 "  spliviews
-nnoremap <Leader>sn :split<CR>
-nnoremap <Leader>sN :vsplit<CR>
+nnoremap <Leader>- :split<CR>
+nnoremap <Leader>\| :vsplit<CR>
 nnoremap ss <C-w>j
 nnoremap sa <C-w>h
 nnoremap sw <C-W>k
@@ -282,16 +283,14 @@ nnoremap sd <C-W>l
 nnoremap s> <C-w>>
 nnoremap s< <C-w><
 
-
 "  cursor moves
 nnoremap <C-a> h
 nnoremap <C-s> j
-nnoremap <C-w> k
-nnoremap <C-d> l
+nnoremap <C-d> k
+nnoremap <C-f> l
 
 if has('nvim')
-    tnoremap j i
-    tnoremap jj <C-\><C-n>
+    tnoremap tt <C-\><C-n>
 endif
 
 """"""""""
@@ -332,7 +331,6 @@ else
   command! -bang -nargs=* Grep
     \ call fzf#vim#grep('grep -r --line-number '.shellescape(<q-args>).' *', 0, <bang>0)
 endif
-
 
 
 " EasyMotion"

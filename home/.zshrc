@@ -33,9 +33,9 @@ eval "$(pyenv init -)"
 ################
 # Golang Paths #
 ################
-export GOROOT=/usr/local/opt/go/libexec
-#export GOPATH=$HOME
-#export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
+export GOROOT=/usr/lib/go
+export GOPATH=$HOME/.go
+export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
 
 ## Basictex
 export PATH=$PATH:/usr/local/texlive/2018basic/bin/x86_64-darwin
@@ -308,25 +308,11 @@ case "$TERM" in
     ;;
 esac
 
-source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source ~/.zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 ZSH_HIGHLIGHT_HIGHLIGHTERS+=(brackets)
 
-# function powerline_precmd() {
-#     PS1="$(powerline-shell --shell zsh $?)"
-# }
-
-# function install_powerline_precmd() {
-#   for s in "${precmd_functions[@]}"; do
-#     if [ "$s" = "powerline_precmd" ]; then
-#       return
-#     fi
-#   done
-#   precmd_functions+=(powerline_precmd)
-# }
-
-# if [ "$TERM" != "linux" ]; then
-#     install_powerline_precmd
-# fi
+export FZF_DEFAULT_COMMAND='fd --type f'
+export ENHANCD_FILTER=fzf:peco
 
 function powerline_precmd() {
     PS1="$($GOPATH/bin/powerline-go -colorize-hostname -cwd-max-depth 3 -modules "venv,host,ssh,cwd,perms,git" -error $? -shell zsh)"
@@ -369,4 +355,3 @@ fi
 zplug load
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-export PYTHONPATH=/home/keitasuzuki/Documents/gpfn/dlchip-aics/apps/..:/home/keitasuzuki/Documents/gpfn/dlchip-aics/apps/../assembler
