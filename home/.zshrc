@@ -5,12 +5,12 @@ autoload -Uz is-at-least
 ###########################
 #  Environment Variables  #
 ###########################
-export CLICOLOR=1
-# export GEM_HOME="$(/usr/local/bin/ruby -e 'print Gem.user_dir')"
+# export CLICOLOR=1
+# # export GEM_HOME="$(/usr/local/bin/ruby -e 'print Gem.user_dir')"
 export GPG_TTY="$(tty)"
 export USE_POWERLINE=0
 
-typeset -U path
+# typeset -U path
 path=(
   ~/.local/bin
   /usr/local/bin
@@ -313,9 +313,27 @@ ZSH_HIGHLIGHT_HIGHLIGHTERS+=(brackets)
 
 export FZF_DEFAULT_COMMAND='fd --type f'
 export ENHANCD_FILTER=fzf:peco
+source /usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
+# function powerline_precmd() {
+#     PS1="$(powerline-shell --shell zsh $?)"
+# }
+
+# function install_powerline_precmd() {
+#   for s in "${precmd_functions[@]}"; do
+#     if [ "$s" = "powerline_precmd" ]; then
+#       return
+#     fi
+#   done
+#   precmd_functions+=(powerline_precmd)
+# }
+
+# if [ "$TERM" != "linux" ]; then
+#     install_powerline_precmd
+# fi
 
 function powerline_precmd() {
-    PS1="$($GOPATH/bin/powerline-go -colorize-hostname -cwd-max-depth 3 -modules "venv,host,ssh,cwd,perms,git" -error $? -shell zsh)"
+    PS1="$($GOPATH/bin/powerline-go -colorize-hostname -cwd-max-depth 3 -modules "venv,ssh,cwd,perms,git" -error $? -shell zsh)"
 }
 
 function install_powerline_precmd() {
