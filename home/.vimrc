@@ -11,12 +11,13 @@ Plug 'easymotion/vim-easymotion', {'on': [
   \ '<Plug>(easymotion-j)', '<Plug>(easymotion-k)',
   \ '<Plug>(easymotion-s2)', '<Plug>(easymotion-overwin-f2)',
   \ '<Plug>(easymotion-sn)', '<Plug>(easymotion-tn)' ]}
+Plug 'Yggdroot/indentLine'
 
 " completion and linting
 Plug 'w0rp/ale'
 Plug '~/.fzf' | Plug 'junegunn/fzf.vim'
 Plug 'Valloric/YouCompleteMe', {
-  \ 'do': './install.py --clang-completer'}
+  \ 'do': './install.py --clang-completer --go-completer'}
 Plug 'rdnetto/YCM-generator', {'branch': 'stable',
   \ 'on': ['YcmGenerateConfig', 'CCGenerateConfig']}
 Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
@@ -30,11 +31,12 @@ Plug 'majutsushi/tagbar'
 Plug 'scrooloose/nerdtree', {'on': 'NERDTreeToggle'}
 Plug 'mbbill/undotree', {'on': 'UndotreeToggle'}
 Plug 'vim-airline/vim-airline' | Plug 'vim-airline/vim-airline-themes'
-Plug 'ctrlpvim/ctrlp.vim'
-Plug 'Shougo/vimshell.vim'
+" Plug 'ctrlpvim/ctrlp.vim'
+" Plug 'Shougo/vimshell.vim'
 Plug 'Shougo/deol.nvim'
 Plug 'Shougo/vimproc.vim', {'do' : 'make'}
-
+Plug 'jiangmiao/auto-pairs'
+Plug 'twitvim/twitvim'
 " colorschemes
 Plug 'tomasr/molokai'
 Plug 'altercation/vim-colors-solarized'
@@ -175,7 +177,7 @@ xnoremap <Space> \
 
 " basic keybindings
 nnoremap ; :
-nnoremap j i
+" nnoremap j i
 inoremap jj <Esc>
 
 " a more logical mapping for Y
@@ -237,12 +239,12 @@ nnoremap <silent> <Leader><C-o> :History<CR>
 nnoremap <silent> <Leader><C-]> :BTags <C-r>=expand("<cword>")<CR><CR>
 
 " easymotion
-nmap <Leader><C-s> <Plug>(easymotion-j)
-xmap <Leader><C-s> <Plug>(easymotion-j)
-omap <Leader><C-s> <Plug>(easymotion-j)
-nmap <Leader><C-d> <Plug>(easymotion-k)
-xmap <Leader><C-d> <Plug>(easymotion-k)
-omap <Leader><C-d> <Plug>(easymotion-k)
+nmap <Leader>j <Plug>(easymotion-j)
+xmap <Leader>j <Plug>(easymotion-j)
+omap <Leader>j <Plug>(easymotion-j)
+nmap <Leader>k <Plug>(easymotion-k)
+xmap <Leader>k <Plug>(easymotion-k)
+omap <Leader>k <Plug>(easymotion-k)
 nmap <Leader>s <Plug>(easymotion-s2)
 xmap <Leader>s <Plug>(easymotion-s2)
 omap <Leader>s <Plug>(easymotion-s2)
@@ -276,18 +278,18 @@ nnoremap sA gT
 "  spliviews
 nnoremap <Leader>- :split<CR>
 nnoremap <Leader>\| :vsplit<CR>
-nnoremap ss <C-w>j
-nnoremap sa <C-w>h
-nnoremap sw <C-W>k
-nnoremap sd <C-W>l
+nnoremap <C-j> <C-w>j
+nnoremap <C-h> <C-w>h
+nnoremap <C-k> <C-W>k
+nnoremap <C-l> <C-W>l
 nnoremap s> <C-w>>
 nnoremap s< <C-w><
 
 "  cursor moves
-nnoremap <C-a> h
-nnoremap <C-s> j
-nnoremap <C-d> k
-nnoremap <C-f> l
+" nnoremap <C-a> h
+" nnoremap <C-s> j
+" nnoremap <C-d> k
+" nnoremap <C-f> l
 
 if has('nvim')
     tnoremap tt <C-\><C-n>
