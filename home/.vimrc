@@ -37,6 +37,7 @@ Plug 'Shougo/deol.nvim'
 Plug 'Shougo/vimproc.vim', {'do' : 'make'}
 Plug 'jiangmiao/auto-pairs'
 Plug 'twitvim/twitvim'
+Plug 'mileszs/ack.vim'
 " colorschemes
 Plug 'tomasr/molokai'
 Plug 'altercation/vim-colors-solarized'
@@ -366,6 +367,11 @@ let g:undotree_WindowLayout=2
 " VimR "
 if has('gui_vimr')
   source ~/.config/nvim/ginit.vim
+endif
+
+" AckVim
+if executable('ag')
+  let g:ackprg = 'ag --vimgrep'
 endif
 
 " NerdTreeToggle "
