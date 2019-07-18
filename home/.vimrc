@@ -335,7 +335,6 @@ else
     \ call fzf#vim#grep('grep -r --line-number '.shellescape(<q-args>).' *', 0, <bang>0)
 endif
 
-
 " EasyMotion"
 let g:EasyMotion_do_mapping=0
 let g:EasyMotion_smartcase=1
@@ -364,7 +363,9 @@ endif
 " undotree "
 let g:undotree_WindowLayout=2
 
-" VimR "
+" tagbar "
+let g:tagbar_width = 30
+
 if has('gui_vimr')
   source ~/.config/nvim/ginit.vim
 endif
