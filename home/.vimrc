@@ -46,6 +46,7 @@ Plug 'altercation/vim-colors-solarized'
 Plug 'tmux-plugins/vim-tmux-focus-events'
 Plug 'roxma/vim-tmux-clipboard'
 Plug 'benmills/vimux'
+Plug 'christoomey/vim-tmux-navigator'
 
 " filetypes
 Plug 'fatih/vim-go', {'for': 'go'}
