@@ -33,8 +33,8 @@ eval "$(pyenv init -)"
 ################
 # Golang Paths #
 ################
-export GOROOT=/usr/lib/go
-export GOPATH=$HOME/.go
+export GOROOT=/usr/local/opt/go/libexec
+export GOPATH=/Users/quasi-mod/Documents/src/go
 export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
 
 ## Basictex
@@ -47,7 +47,7 @@ export PATH=$PATH:/usr/local/texlive/2018basic/bin/x86_64-darwin
 alias grep='grep --color=auto'
 alias fgrep='fgrep --color=auto'
 alias egrep='egrep --color=auto'
-alias ls='ls -F'
+alias ls='ls -F -G'
 alias ll='ls -l'
 alias la='ls -a'
 alias lla='ls -l -a'
@@ -308,13 +308,14 @@ case "$TERM" in
     ;;
 esac
 
-source ~/.zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+# source ~/.zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 ZSH_HIGHLIGHT_HIGHLIGHTERS+=(brackets)
 
 export FZF_DEFAULT_COMMAND='fd --type f'
 export ENHANCD_FILTER=fzf:peco
 source /usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh
-source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
+# source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 # function powerline_precmd() {
 #     PS1="$(powerline-shell --shell zsh $?)"
 # }
