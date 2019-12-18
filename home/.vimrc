@@ -42,6 +42,11 @@ Plug 'mileszs/ack.vim'
 Plug 'tomasr/molokai'
 Plug 'altercation/vim-colors-solarized'
 
+" tmux related
+Plug 'tmux-plugins/vim-tmux-focus-events'
+Plug 'roxma/vim-tmux-clipboard'
+Plug 'benmills/vimux'
+
 " filetypes
 Plug 'fatih/vim-go', {'for': 'go'}
 Plug 'ledger/vim-ledger', {'for': 'ledger'}
@@ -56,8 +61,11 @@ Plug 'plasticboy/vim-markdown'
 "  vim auto save
 Plug 'vim-scripts/vim-auto-save'
 
+" swift
 Plug 'apple/swift-completion', {'for': 'swift'}
 
+"  private
+Plug 'quasi-park/logReader'
 " filetype plugin indent and syntax is handled by plug#end
 call plug#end()
 
@@ -270,11 +278,16 @@ nnoremap <silent> <LocalLeader><C-]> :YcmCompleter GoTo<CR>
 " ctags
 noremap <Leader>[ <C-t>
 noremap <Leader>] <C-]>
+noremap <Leader>} g]
 
 "  tabs
 nnoremap <Leader><C-t> :tabnew<CR>
-nnoremap sD gt
-nnoremap sA gT
+
+" Vimux
+noremap <Leader>vp :VimuxPromptCommand<CR>
+noremap <Leader>vl :VimuxRunLastCommand<CR>
+noremap <Leader>vq :VimuxCloseRunner<CR>
+noremap <Leader>vz :call VimuxZoomRunner()<CR>
 
 "  spliviews
 nnoremap <Leader>- :split<CR>
@@ -285,12 +298,6 @@ nnoremap <C-k> <C-W>k
 nnoremap <C-l> <C-W>l
 nnoremap s> <C-w>>
 nnoremap s< <C-w><
-
-"  cursor moves
-" nnoremap <C-a> h
-" nnoremap <C-s> j
-" nnoremap <C-d> k
-" nnoremap <C-f> l
 
 if has('nvim')
     tnoremap tt <C-\><C-n>
