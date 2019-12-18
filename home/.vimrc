@@ -348,11 +348,11 @@ let g:EasyMotion_use_migemo=1
 let g:EditorConfig_exclude_patterns=['fugitive://.*', '\(M\|m\|GNUm\)akefile']
 
 " UltiSnips "
-let g:UltiSnipsExpandTrigger='<Enter>'
+let g:UltiSnipsExpandTrigger='<Tab>'
 
 " YouCompleteMe "
-let g:ycm_key_list_select_completion=['<TAB>', '<Down>', '<C-j>']
-let g:ycm_key_list_previous_completion=['<S-TAB>', '<Up>', '<C-k>']
+let g:ycm_key_list_select_completion=['<Down>', '<C-j>']
+let g:ycm_key_list_previous_completion=['<Up>', '<C-k>']
 let g:ycm_key_invoke_completion='<C-Space>'
 let g:ycm_global_ycm_extra_conf='~/.vim/ycm_extra_conf.py'
 
