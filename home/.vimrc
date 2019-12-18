@@ -31,8 +31,6 @@ Plug 'majutsushi/tagbar'
 Plug 'scrooloose/nerdtree', {'on': 'NERDTreeToggle'}
 Plug 'mbbill/undotree', {'on': 'UndotreeToggle'}
 Plug 'vim-airline/vim-airline' | Plug 'vim-airline/vim-airline-themes'
-" Plug 'ctrlpvim/ctrlp.vim'
-" Plug 'Shougo/vimshell.vim'
 Plug 'Shougo/deol.nvim'
 Plug 'Shougo/vimproc.vim', {'do' : 'make'}
 Plug 'jiangmiao/auto-pairs'
@@ -46,11 +44,11 @@ Plug 'altercation/vim-colors-solarized'
 Plug 'tmux-plugins/vim-tmux-focus-events'
 Plug 'roxma/vim-tmux-clipboard'
 Plug 'benmills/vimux'
+Plug 'christoomey/vim-tmux-navigator'
 
 " filetypes
-Plug 'fatih/vim-go', {'for': 'go'}
+" Plug 'fatih/vim-go', {'for': 'go'}
 Plug 'ledger/vim-ledger', {'for': 'ledger'}
-Plug 'LnL7/vim-nix', {'for': 'nix'}
 Plug 'rust-lang/rust.vim', {'for': 'rust'}
 Plug 'lervag/vimtex', {'for': 'tex'}
 
@@ -62,10 +60,8 @@ Plug 'plasticboy/vim-markdown'
 Plug 'vim-scripts/vim-auto-save'
 
 " swift
-Plug 'apple/swift-completion', {'for': 'swift'}
+" Plug 'apple/swift-completion', {'for': 'swift'}
 
-"  private
-Plug 'quasi-park/logReader'
 " filetype plugin indent and syntax is handled by plug#end
 call plug#end()
 
@@ -274,6 +270,7 @@ xmap s <Nop>
 nnoremap <silent> <LocalLeader>K :YcmCompleter GetDoc<CR>
 nnoremap <silent> <LocalLeader>[i :YcmCompleter GetType<CR>
 nnoremap <silent> <LocalLeader><C-]> :YcmCompleter GoTo<CR>
+nnoremap <silent> <LocalLeader><C-r> :YcmCompleter GoToReferences<CR>
 
 " ctags
 noremap <Leader>[ <C-t>
@@ -307,7 +304,6 @@ endif
 "  Misc  "
 """"""""""
 let g:tex_flavor='latex'
-autocmd FileType tex setlocal spell spelllang=en_us
 
 filetype plugin indent on
 syntax on
@@ -351,18 +347,16 @@ let g:EasyMotion_use_migemo=1
 let g:EditorConfig_exclude_patterns=['fugitive://.*', '\(M\|m\|GNUm\)akefile']
 
 " UltiSnips "
-let g:UltiSnipsExpandTrigger='<C-x>x'
+let g:UltiSnipsExpandTrigger='<Enter>'
 
 " YouCompleteMe "
-let g:ycm_key_list_select_completion=[]
-let g:ycm_key_list_previous_completion=[]
-let g:ycm_key_invoke_completion=''
+let g:ycm_key_list_select_completion=['<TAB>', '<Down>', '<C-j>']
+let g:ycm_key_list_previous_completion=['<S-TAB>', '<Up>', '<C-k>']
+let g:ycm_key_invoke_completion='<C-Space>'
 let g:ycm_global_ycm_extra_conf='~/.vim/ycm_extra_conf.py'
-let g:ycm_rust_src_path='~/.rustup/toolchains/stable-x86_64-apple-darwin/lib/rustlib/src/rust/src'
 
 " airline "
 let g:airline_skip_empty_sections=1
-" let g:airline_left_sep = '>'
 if $USE_POWERLINE
   let g:airline_powerline_fonts=1
 endif
