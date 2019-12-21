@@ -298,6 +298,9 @@ nnoremap s< <C-w><
 
 if has('nvim')
     tnoremap tt <C-\><C-n>
+    set sh=zsh
+    :command STerm split | terminal
+    :command VTerm vsplit | terminal
 endif
 
 """"""""""
