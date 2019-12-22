@@ -35,41 +35,17 @@
     "vim.statusBarColors.visualline": "#92D67D",
     "vim.statusBarColors.visualblock": "#92D67D",
     "vim.statusBarColors.replace": "#B4435",
-    "vim.insertModeKeyBindings": [
-        {
-            "before": ["j", "j"],
-            "after": ["<Esc>"]
-        }
-    ],
-    "vim.normalModeKeyBindings":[
-        {
-            "before": [";"],
-            "after": [":"]
-        },
-        {
-            "before":["<Esc>"],
-            "commands": [":nohl"]
-        }
-    ],
-    "vim.visualModeKeyBindingsNonRecursive": [
-        {
-            "before": [">"],
-            "commands": ["editor.action.indentLines"]
-        },
-        {
-            "before": ["<"],
-            "commands": ["editor.action.outdentLines"]
-        }
-    ],
     "workbench.colorCustomizations": {
-        "statusBar.background": "#F16C2A",
-        "statusBar.noFolderBackground": "#F16C2A",
-        "statusBar.debuggingBackground": "#F16C2A"
+        "statusBar.background": "#007acc",
+        "statusBar.noFolderBackground": "#007acc",
+        "statusBar.debuggingBackground": "#007acc"
     },
     "workbench.tips.enabled": false,
     "terminal.explorerKind": "external",
     "terminal.external.osxExec": "iTerm.app",
     "terminal.integrated.shell.linux": "/bin/zsh",
+    "vim.vimrc.enable": true,
+    "vim.vimrc.path": "~/.vimrc",
     "vim.highlightedyank.enable": true,
     "vim.highlightedyank.color": "rgb(230, 127, 110,0.7)",
     "workbench.startupEditor": "newUntitledFile",
