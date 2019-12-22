@@ -43,17 +43,13 @@
     ],
     "vim.normalModeKeyBindings":[
         {
-            "before": ["j"],
-            "after": ["i"]
-        },
-        {
             "before": [";"],
             "after": [":"]
         },
         {
             "before":["<Esc>"],
             "commands": [":nohl"]
-        },
+        }
     ],
     "vim.visualModeKeyBindingsNonRecursive": [
         {
@@ -63,7 +59,7 @@
         {
             "before": ["<"],
             "commands": ["editor.action.outdentLines"]
-        },
+        }
     ],
     "workbench.colorCustomizations": {
         "statusBar.background": "#F16C2A",
@@ -78,7 +74,6 @@
     "vim.highlightedyank.color": "rgb(230, 127, 110,0.7)",
     "workbench.startupEditor": "newUntitledFile",
     "editor.renderWhitespace": "boundary",
-    "workbench.activityBar.visible": false,
     "workbench.iconTheme": "vscode-icons",
     "workbench.statusBar.feedback.visible": false,
     "workbench.list.keyboardNavigation": "simple",
@@ -89,5 +84,9 @@
         ]
     },
     "sync.gist": "f1e8a2b78c37dc3bc8166ab95c140971",
-    "editor.lineNumbers": "relative"
+    "editor.lineNumbers": "relative",
+    "editor.suggestSelection": "first",
+    "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
+    "latex-workshop.latex.external.build.command": "latexmk",
+    "python.jediEnabled": false
 }
