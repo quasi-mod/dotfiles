@@ -9,11 +9,13 @@
     "editor.minimap.renderCharacters": false,
     "editor.renderIndentGuides": true,
     "editor.fontSize":16,
+    "editor.renderWhitespace": "boundary",
+    "editor.lineNumbers": "relative",
+    "editor.suggestSelection": "first",
     "terminal.integrated.fontSize": 16,
     "workbench.colorTheme": "Monokai",
     "editor.wordWrap": "on",
     "files.trimTrailingWhitespace": true,
-
     "[cpp]": {
         "editor.quickSuggestions": true
     },
@@ -21,6 +23,7 @@
         "editor.quickSuggestions": true
     },
     "window.zoomLevel": 0,
+    // Vim Related
     "vim.leader": "<space>",
     "vim.camelCaseMotion.enable": true,
     "vim.easymotion": true,
@@ -35,6 +38,10 @@
     "vim.statusBarColors.visualline": "#92D67D",
     "vim.statusBarColors.visualblock": "#92D67D",
     "vim.statusBarColors.replace": "#B4435",
+    "vim.vimrc.enable": true,
+    "vim.vimrc.path": "~/.vimrc",
+    "vim.highlightedyank.enable": true,
+    "vim.highlightedyank.color": "rgb(230, 127, 110,0.7)",
     "workbench.colorCustomizations": {
         "statusBar.background": "#007acc",
         "statusBar.noFolderBackground": "#007acc",
@@ -44,12 +51,7 @@
     "terminal.explorerKind": "external",
     "terminal.external.osxExec": "iTerm.app",
     "terminal.integrated.shell.linux": "/bin/zsh",
-    "vim.vimrc.enable": true,
-    "vim.vimrc.path": "~/.vimrc",
-    "vim.highlightedyank.enable": true,
-    "vim.highlightedyank.color": "rgb(230, 127, 110,0.7)",
     "workbench.startupEditor": "newUntitledFile",
-    "editor.renderWhitespace": "boundary",
     "workbench.iconTheme": "vscode-icons",
     "workbench.statusBar.feedback.visible": false,
     "workbench.list.keyboardNavigation": "simple",
@@ -60,8 +62,6 @@
         ]
     },
     "sync.gist": "f1e8a2b78c37dc3bc8166ab95c140971",
-    "editor.lineNumbers": "relative",
-    "editor.suggestSelection": "first",
     "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
     "latex-workshop.latex.external.build.command": "latexmk",
     "python.jediEnabled": false
