@@ -9,11 +9,13 @@
     "editor.minimap.renderCharacters": false,
     "editor.renderIndentGuides": true,
     "editor.fontSize":16,
+    "editor.renderWhitespace": "boundary",
+    "editor.lineNumbers": "relative",
+    "editor.suggestSelection": "first",
     "terminal.integrated.fontSize": 16,
     "workbench.colorTheme": "Monokai",
     "editor.wordWrap": "on",
     "files.trimTrailingWhitespace": true,
-
     "[cpp]": {
         "editor.quickSuggestions": true
     },
@@ -21,6 +23,7 @@
         "editor.quickSuggestions": true
     },
     "window.zoomLevel": 0,
+    // Vim Related
     "vim.leader": "<space>",
     "vim.camelCaseMotion.enable": true,
     "vim.easymotion": true,
@@ -35,50 +38,20 @@
     "vim.statusBarColors.visualline": "#92D67D",
     "vim.statusBarColors.visualblock": "#92D67D",
     "vim.statusBarColors.replace": "#B4435",
-    "vim.insertModeKeyBindings": [
-        {
-            "before": ["j", "j"],
-            "after": ["<Esc>"]
-        }
-    ],
-    "vim.normalModeKeyBindings":[
-        {
-            "before": ["j"],
-            "after": ["i"]
-        },
-        {
-            "before": [";"],
-            "after": [":"]
-        },
-        {
-            "before":["<Esc>"],
-            "commands": [":nohl"]
-        },
-    ],
-    "vim.visualModeKeyBindingsNonRecursive": [
-        {
-            "before": [">"],
-            "commands": ["editor.action.indentLines"]
-        },
-        {
-            "before": ["<"],
-            "commands": ["editor.action.outdentLines"]
-        },
-    ],
+    "vim.vimrc.enable": true,
+    "vim.vimrc.path": "~/.vimrc",
+    "vim.highlightedyank.enable": true,
+    "vim.highlightedyank.color": "rgb(230, 127, 110,0.7)",
     "workbench.colorCustomizations": {
-        "statusBar.background": "#F16C2A",
-        "statusBar.noFolderBackground": "#F16C2A",
-        "statusBar.debuggingBackground": "#F16C2A"
+        "statusBar.background": "#007acc",
+        "statusBar.noFolderBackground": "#007acc",
+        "statusBar.debuggingBackground": "#007acc"
     },
     "workbench.tips.enabled": false,
     "terminal.explorerKind": "external",
     "terminal.external.osxExec": "iTerm.app",
     "terminal.integrated.shell.linux": "/bin/zsh",
-    "vim.highlightedyank.enable": true,
-    "vim.highlightedyank.color": "rgb(230, 127, 110,0.7)",
     "workbench.startupEditor": "newUntitledFile",
-    "editor.renderWhitespace": "boundary",
-    "workbench.activityBar.visible": false,
     "workbench.iconTheme": "vscode-icons",
     "workbench.statusBar.feedback.visible": false,
     "workbench.list.keyboardNavigation": "simple",
@@ -89,5 +62,7 @@
         ]
     },
     "sync.gist": "f1e8a2b78c37dc3bc8166ab95c140971",
-    "editor.lineNumbers": "relative"
+    "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
+    "latex-workshop.latex.external.build.command": "latexmk",
+    "python.jediEnabled": false
 }
