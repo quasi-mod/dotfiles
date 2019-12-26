@@ -8,6 +8,19 @@
       "args": ["--background-index"],
       "rootPatterns": ["compile_flags.txt", "compile_commands.json", ".vim/", ".git/", ".hg/"],
       "filetypes": ["c", "cpp", "objc", "objcpp"]
+    },
+    "ccls": {
+      "command": "ccls",
+      "filetypes": ["c", "cpp", "objc", "objcpp"],
+      "rootPatterns": [".ccls", "compile_commands.json", ".vim/", ".git/", ".hg/"],
+      "initializationOptions": {
+         "cache": {
+           "directory": "/tmp/ccls"
+         }
+       }
     }
-  }
+  },
+  "python.jediPath": "~/.pyenv/versions/3.6.8/Python.framework/Versions/3.6/lib/python3.6/site-packages",
+  "python.formatting.provider": "yapf",
+  "python.linting.pylintEnabled": true
 }

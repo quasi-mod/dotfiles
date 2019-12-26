@@ -1,6 +1,15 @@
+""""""""""""""""""
+"   variables    "
+""""""""""""""""""
+let host_var = $HOME
+let python3_host_prog_var = expand('~/.pyenv/shims/python')
+
 """"""""""""""""""""
 "  Initialization  "
 """"""""""""""""""""
+" python3 path
+let g:python3_host_prog = python3_host_prog_var
+
 call plug#begin('~/.vim/plugged')
 " editing
 Plug 'junegunn/vim-easy-align'
@@ -17,10 +26,7 @@ Plug 'Yggdroot/indentLine'
 Plug 'w0rp/ale'
 Plug '~/.fzf' | Plug 'junegunn/fzf.vim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-" Plug 'Valloric/YouCompleteMe', {
-"   \ 'do': './install.py --clang-completer --go-completer'}
-" Plug 'rdnetto/YCM-generator', {'branch': 'stable',
-"   \ 'on': ['YcmGenerateConfig', 'CCGenerateConfig']}
+Plug 'lambdalisue/vim-pyenv'
 Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
 
 " utilities
