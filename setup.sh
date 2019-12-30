@@ -126,7 +126,8 @@ setup::misc() {
   chmod 700 ~/Library/Application\ Support/Code
 }
 
-setup::plugins() {
+setup::plugins_mac() {
+  /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
   brew update
   brew install \
     cmake \
@@ -141,6 +142,44 @@ setup::plugins() {
   vim +PlugInstall +qall
 }
 
+setup::plugins_ubuntu() {
+  sudo add-apt-repository ppa:longsleep/golang-backports
+  sudo apt update
+  sudo apt upgrade
+  sudo apt install \
+      cmake \
+      fzf \
+      git \
+      make \
+      gcc \
+      nodejs \
+      npm \
+      golang-go
+
+  vim +PlugInstall +qall
+}
+setup::deps() {
+  if [[ "$OSTYPE" == "linux-gnu" ]]; then
+    setup::deps_linux()
+  elif [[ "$OSTYPE" == "darwin"* ]]; then
+    setup::deps_mac()
+  else
+  fi
+}
+
+setup::pyenv() {
+  git clone https://github.com/pyenv/pyenv.git $(HOME)/.pyenv
+}
+
+setup::deps_linux(){
+  setup::plugins_ubuntu()
+  setup::pyenv()
+  go get -u github.com/justjanne/powerline-go
+}
+
+setup::deps_mac() {
+  setup::plugins_mac()
+}
 ######################
 #  helper functions  #
 ######################

@@ -34,7 +34,7 @@ eval "$(pyenv init -)"
 # Golang Paths #
 ################
 export GOROOT=/usr/local/opt/go/libexec
-export GOPATH=/Users/keita_suzuki/Documents/src/go
+export GOPATH=~/Documents/src/go
 export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
 
 ## Basictex
@@ -364,6 +364,8 @@ fi
 source $HOME/.zplug/init.zsh
 
 zplug "b4b4r07/enhancd", use:init.sh
+zplug "zsh-users/zsh-syntax-highlighting", defer:2
+zplug "zsh-users/zsh-autosuggestions"
 
 # install plugin
 if ! zplug check ; then
@@ -372,5 +374,4 @@ fi
 
 # load plugin
 zplug load
-
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
