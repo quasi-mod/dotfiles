@@ -43,9 +43,9 @@
     "vim.highlightedyank.enable": true,
     "vim.highlightedyank.color": "rgb(230, 127, 110,0.7)",
     "workbench.colorCustomizations": {
-        "statusBar.background": "#007acc",
-        "statusBar.noFolderBackground": "#007acc",
-        "statusBar.debuggingBackground": "#007acc"
+        "statusBar.background": "#F16C2A",
+        "statusBar.noFolderBackground": "#F16C2A",
+        "statusBar.debuggingBackground": "#F16C2A"
     },
     "workbench.tips.enabled": false,
     "terminal.explorerKind": "external",

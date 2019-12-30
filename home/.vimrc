@@ -24,6 +24,7 @@ Plug 'Yggdroot/indentLine'
 
 " completion and linting
 Plug 'w0rp/ale'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug '~/.fzf' | Plug 'junegunn/fzf.vim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'lambdalisue/vim-pyenv'
@@ -66,9 +67,6 @@ Plug 'plasticboy/vim-markdown'
 "  vim auto save
 Plug 'vim-scripts/vim-auto-save'
 
-" swift
-" Plug 'apple/swift-completion', {'for': 'swift'}
-
 " filetype plugin indent and syntax is handled by plug#end
 call plug#end()
 
@@ -92,8 +90,25 @@ set expandtab
 set shiftwidth=4
 set softtabstop=4
 set tabstop=4
+set expandtab
 set autoindent
+set smartindent
 set formatoptions+=jmB
+
+augroup fileTypeIndent
+    autocmd!
+    autocmd BufNewFile,BufRead *.py setlocal tabstop=4 softtabstop=4 shiftwidth=4
+    " autocmd BufNewFile,BufRead *.rb setlocal tabstop=2 softtabstop=2 shiftwidth=2
+    " autocmd BufNewFile,BufRead *.c setlocal tabstop=2 softtabstop=2 shiftwidth=2
+    " autocmd BufNewFile,BufRead *.cc setlocal tabstop=2 softtabstop=2 shiftwidth=2
+    " autocmd BufNewFile,BufRead *.cpp setlocal tabstop=2 softtabstop=2 shiftwidth=2
+    " autocmd BufNewFile,BufRead *.h setlocal tabstop=2 softtabstop=2 shiftwidth=2
+    " autocmd BufNewFile,BufRead *.hh setlocal tabstop=2 softtabstop=2 shiftwidth=2
+    " autocmd BufNewFile,BufRead *.html setlocal tabstop=2 softtabstop=2 shiftwidth=2
+    " autocmd BufNewFile,BufRead *.j2 setlocal tabstop=2 softtabstop=2 shiftwidth=2
+    " autocmd BufNewFile,BufRead *.erb setlocal tabstop=2 softtabstop=2 shiftwidth=2
+    " autocmd BufNewFile,BufRead *.hs setlocal tabstop=2 softtabstop=2 shiftwidth=2
+augroup END
 
 " jump to the last known cursor position
 au vimrc BufReadPost *
@@ -269,6 +284,9 @@ inoremap jj <Esc>
 
 " a more logical mapping for Y
 nnoremap Y y$
+" add another option to go back to start / end
+nnoremap <S-l> $
+nnoremap <S-h> ^
 " break undo before deleting a whole line
 inoremap <C-u> <C-g>u<C-u>
 " a more powerful <C-l>
