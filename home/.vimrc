@@ -25,7 +25,8 @@ Plug 'Yggdroot/indentLine'
 " completion and linting
 Plug 'w0rp/ale'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug '~/.fzf' | Plug 'junegunn/fzf.vim'
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'lambdalisue/vim-pyenv'
 Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
@@ -44,6 +45,9 @@ Plug 'Shougo/vimproc.vim', {'do' : 'make'}
 Plug 'jiangmiao/auto-pairs'
 Plug 'twitvim/twitvim'
 Plug 'mileszs/ack.vim'
+Plug 'mcchrish/nnn.vim'
+Plug 'kassio/neoterm'
+
 " colorschemes
 Plug 'tomasr/molokai'
 Plug 'altercation/vim-colors-solarized'
@@ -396,11 +400,12 @@ nnoremap <C-l> <C-W>l
 nnoremap s> <C-w>>
 nnoremap s< <C-w><
 
+" terminal
 if has('nvim')
-    tnoremap tt <C-\><C-n>
     set sh=zsh
-    :command STerm split | terminal
-    :command VTerm vsplit | terminal
+    let g:neoterm_default_mod=':botright'
+    tnoremap tt <C-\><C-n>
+    nnoremap <C-t> :Ttoggle resize=14<CR>
 endif
 
 """"""""""
@@ -424,9 +429,24 @@ if s:has_rg
   set grepprg=rg\ --vimgrep\ --hidden
 endif
 
+" markdown
+let g:vim_markdown_folding_disabled = 1
+
+" spellchecks
+set dictionary+=/usr/share/dict/words
+
+" nnn
+let g:nnn#command = "NNN_FIFO='/tmp/nnn.fifo' NNN_COLORS=6666 NNN_FCOLORS=c1e2272e006033f7c6d6abc4 nnn -d"
+let g:nnn#layout = { 'window': { 'width': 0.9, 'height': 0.6, 'highlight': 'Debug' } } 
+let g:nnn#action = {
+    \ '<c-t>': 'tab split',
+    \ '<c-x>': 'split',
+    \ '<c-v>': 'vsplit'}
+
 " FZF "
 let g:fzf_action = {
-  \ 'enter': 'vsplit'}
+  \ 'enter': 'tab split'}
+let g:fzf_preview_window = ['right:50%', 'ctrl-/']
 command! -bang Compilers
   \ call vimrc#fzf_compilers(0, <bang>0)
 command! -bang BCompilers
@@ -434,8 +454,10 @@ command! -bang BCompilers
 command! -bang -nargs=? -complete=dir Files
   \ call fzf#vim#files(<q-args>, fzf#vim#with_preview(), <bang>0)
 if s:has_rg
-  command! -bang -nargs=* Grep
-    \ call fzf#vim#grep('rg --vimgrep --color=always '.shellescape(<q-args>), 1, <bang>0)
+    command! -bang -nargs=* Grep
+      \ call fzf#vim#grep(
+      \   'rg --column --line-number --no-heading --color=always --smart-case -- '.shellescape(<q-args>), 1,
+      \   fzf#vim#with_preview(), <bang>0)
 else
   command! -bang -nargs=* Grep
     \ call fzf#vim#grep('grep -r --line-number '.shellescape(<q-args>).' *', 0, <bang>0)

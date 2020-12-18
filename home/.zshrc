@@ -2,6 +2,11 @@ fpath+=(~/.local/share/zsh/site-functions /usr/local/share/zsh-completions)
 autoload -Uz add-zsh-hook
 autoload -Uz is-at-least
 
+# Load local zshrcs
+if [[ -s "${HOME}/.zshrc_local.zsh" ]]; then
+  source "${HOME}/.zshrc_local.zsh"
+fi
+
 ###########################
 #  Environment Variables  #
 ###########################
@@ -55,6 +60,7 @@ alias qlook='qlmanage -p'
 alias sudoedit='sudo -e'
 alias icloud='cd ~/Library/Mobile\ Documents/com~apple~CloudDocs'
 alias vim='nvim'
+alias code='code .'
 alias ppandoc='pandoc -s --variable geometry="margin=0.9in" --variable mainfont="Palatino" --variable sansfont="Helvetica" --variable monofont="Menlo" --variable fontsize=12pt'
 autoload -Uz zmv
 autoload -Uz cd.. fuck
