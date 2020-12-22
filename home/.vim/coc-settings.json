@@ -22,5 +22,5 @@
   },
   "python.jediPath": "~/.pyenv/versions/3.6.8/Python.framework/Versions/3.6/lib/python3.6/site-packages",
   "python.formatting.provider": "yapf",
-  "python.linting.pylintEnabled": true
+  "python.linting.pylintEnabled": true,
 }

@@ -13,8 +13,22 @@
     "editor.lineNumbers": "relative",
     "editor.suggestSelection": "first",
     "terminal.integrated.fontSize": 16,
-    "workbench.colorTheme": "Monokai",
+    "workbench.colorTheme": "Monokai Pro (Filter Spectrum)",
     "editor.wordWrap": "on",
+    "editor.renderControlCharacters": true, // 制御文字を表示する
+    "editor.renderLineHighlight": "all", // カーソル行を強調する
+    "editor.cursorBlinking": "phase", // カーソルを点滅させる
+    "editor.cursorSurroundingLines": 9, // スクロールを開始する行数
+
+    "workbench.activityBar.visible": false, // 一番左のメニューバーを非表示
+    "workbench.editor.enablePreview": false, // プレビュー機能をオフにする
+
+    "window.restoreFullscreen": true, // 全画面を保持
+
+    "search.exclude": { // 検索対象外のファイル
+        "**/tags": true,
+    },
+
     "files.trimTrailingWhitespace": true,
     "[cpp]": {
         "editor.quickSuggestions": true
@@ -22,7 +36,8 @@
     "[c]": {
         "editor.quickSuggestions": true
     },
-    "window.zoomLevel": 0,
+    "window.zoomLevel": 1,
+
     // Vim Related
     "vim.leader": "<space>",
     "vim.camelCaseMotion.enable": true,
@@ -38,8 +53,10 @@
     "vim.statusBarColors.visualline": "#92D67D",
     "vim.statusBarColors.visualblock": "#92D67D",
     "vim.statusBarColors.replace": "#B4435",
+
     "vim.vimrc.enable": true,
     "vim.vimrc.path": "~/.vimrc",
+
     "vim.highlightedyank.enable": true,
     "vim.highlightedyank.color": "rgb(230, 127, 110,0.7)",
     "workbench.colorCustomizations": {
@@ -47,12 +64,11 @@
         "statusBar.noFolderBackground": "#F16C2A",
         "statusBar.debuggingBackground": "#F16C2A"
     },
+
     "workbench.tips.enabled": false,
-    "terminal.explorerKind": "external",
     "terminal.external.osxExec": "iTerm.app",
     "terminal.integrated.shell.linux": "/bin/zsh",
-    "workbench.startupEditor": "newUntitledFile",
-    "workbench.iconTheme": "vscode-icons",
+    "workbench.startupEditor": "none",
     "workbench.statusBar.feedback.visible": false,
     "workbench.list.keyboardNavigation": "simple",
     "macros": {
@@ -61,8 +77,18 @@
             "outline.focus"
         ]
     },
-    "sync.gist": "f1e8a2b78c37dc3bc8166ab95c140971",
     "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
     "latex-workshop.latex.external.build.command": "latexmk",
-    "python.jediEnabled": false
+    "python.jediEnabled": true,
+    "terminal.integrated.fontFamily": "Meslo LG S DZ for Powerline",
+    "cSpell.userWords": [
+        "LLVM",
+        "struct"
+    ],
+    "terminal.integrated.shell.osx": "/bin/zsh",
+    "terminal.external.linuxExec": "GNOME terminal",
+    "workbench.iconTheme": "Monokai Pro (Filter Spectrum) Icons",
+    "hediet.vscode-drawio.local-storage": "eyIuZHJhd2lvLWNvbmZpZyI6IntcImxhbmd1YWdlXCI6XCJcIixcImN1c3RvbUZvbnRzXCI6W10sXCJsaWJyYXJpZXNcIjpcImdlbmVyYWxcIixcImN1c3RvbUxpYnJhcmllc1wiOltcIkwuc2NyYXRjaHBhZFwiXSxcInBsdWdpbnNcIjpbXSxcInJlY2VudENvbG9yc1wiOltcIjAwMDAwMFwiLFwiQ0MwMDAwXCIsXCJGRkZGRkZcIixcIkZGMDAwMFwiLFwiMDAwMENDXCIsXCIzMzk5RkZcIl0sXCJmb3JtYXRXaWR0aFwiOjI0MCxcImNyZWF0ZVRhcmdldFwiOmZhbHNlLFwicGFnZUZvcm1hdFwiOntcInhcIjowLFwieVwiOjAsXCJ3aWR0aFwiOjgyNyxcImhlaWdodFwiOjExNjl9LFwic2VhcmNoXCI6dHJ1ZSxcInNob3dTdGFydFNjcmVlblwiOnRydWUsXCJncmlkQ29sb3JcIjpcIiNkMGQwZDBcIixcImRhcmtHcmlkQ29sb3JcIjpcIiM2ZTZlNmVcIixcImF1dG9zYXZlXCI6dHJ1ZSxcInJlc2l6ZUltYWdlc1wiOm51bGwsXCJvcGVuQ291bnRlclwiOjAsXCJ2ZXJzaW9uXCI6MTgsXCJ1bml0XCI6MSxcImlzUnVsZXJPblwiOmZhbHNlLFwidWlcIjpcIlwifSJ9",
+    "workbench.editor.showTabs": false,
+    "files.autoGuessEncoding": true
 }
