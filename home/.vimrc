@@ -23,12 +23,10 @@ Plug 'easymotion/vim-easymotion', {'on': [
 Plug 'Yggdroot/indentLine'
 
 " completion and linting
-Plug 'w0rp/ale'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'lambdalisue/vim-pyenv'
 Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
 
 " utilities
@@ -44,7 +42,6 @@ Plug 'Shougo/deol.nvim'
 Plug 'Shougo/vimproc.vim', {'do' : 'make'}
 Plug 'jiangmiao/auto-pairs'
 Plug 'twitvim/twitvim'
-Plug 'mileszs/ack.vim'
 Plug 'mcchrish/nnn.vim'
 Plug 'kassio/neoterm'
 
@@ -63,6 +60,10 @@ Plug 'christoomey/vim-tmux-navigator'
 Plug 'ledger/vim-ledger', {'for': 'ledger'}
 Plug 'rust-lang/rust.vim', {'for': 'rust'}
 Plug 'lervag/vimtex', {'for': 'tex'}
+
+" dart / flutter related
+Plug 'dart-lang/dart-vim-plugin'
+Plug 'thosakwe/vim-flutter'
 
 "  Markdown
 Plug 'godlygeek/tabular'
@@ -102,16 +103,17 @@ set formatoptions+=jmB
 augroup fileTypeIndent
     autocmd!
     autocmd BufNewFile,BufRead *.py setlocal tabstop=4 softtabstop=4 shiftwidth=4
-    " autocmd BufNewFile,BufRead *.rb setlocal tabstop=2 softtabstop=2 shiftwidth=2
-    " autocmd BufNewFile,BufRead *.c setlocal tabstop=2 softtabstop=2 shiftwidth=2
-    " autocmd BufNewFile,BufRead *.cc setlocal tabstop=2 softtabstop=2 shiftwidth=2
-    " autocmd BufNewFile,BufRead *.cpp setlocal tabstop=2 softtabstop=2 shiftwidth=2
-    " autocmd BufNewFile,BufRead *.h setlocal tabstop=2 softtabstop=2 shiftwidth=2
-    " autocmd BufNewFile,BufRead *.hh setlocal tabstop=2 softtabstop=2 shiftwidth=2
-    " autocmd BufNewFile,BufRead *.html setlocal tabstop=2 softtabstop=2 shiftwidth=2
-    " autocmd BufNewFile,BufRead *.j2 setlocal tabstop=2 softtabstop=2 shiftwidth=2
-    " autocmd BufNewFile,BufRead *.erb setlocal tabstop=2 softtabstop=2 shiftwidth=2
-    " autocmd BufNewFile,BufRead *.hs setlocal tabstop=2 softtabstop=2 shiftwidth=2
+    autocmd BufNewFile,BufRead *.rb setlocal tabstop=2 softtabstop=2 shiftwidth=2
+    autocmd BufNewFile,BufRead *.c setlocal tabstop=2 softtabstop=2 shiftwidth=2
+    autocmd BufNewFile,BufRead *.cc setlocal tabstop=2 softtabstop=2 shiftwidth=2
+    autocmd BufNewFile,BufRead *.cpp setlocal tabstop=2 softtabstop=2 shiftwidth=2
+    autocmd BufNewFile,BufRead *.h setlocal tabstop=2 softtabstop=2 shiftwidth=2
+    autocmd BufNewFile,BufRead *.hh setlocal tabstop=2 softtabstop=2 shiftwidth=2
+    autocmd BufNewFile,BufRead *.html setlocal tabstop=2 softtabstop=2 shiftwidth=2
+    autocmd BufNewFile,BufRead *.j2 setlocal tabstop=2 softtabstop=2 shiftwidth=2
+    autocmd BufNewFile,BufRead *.erb setlocal tabstop=2 softtabstop=2 shiftwidth=2
+    autocmd BufNewFile,BufRead *.hs setlocal tabstop=2 softtabstop=2 shiftwidth=2
+    autocmd BufNewFile,BufRead *.dart setlocal tabstop=2 softtabstop=2 shiftwidth=2
 augroup END
 
 " jump to the last known cursor position
@@ -408,6 +410,12 @@ if has('nvim')
     nnoremap <C-t> :Ttoggle resize=14<CR>
 endif
 
+" flutter
+nnoremap <leader>fs :FlutterRun<cr>
+nnoremap <leader>fq :FlutterQuit<cr>
+nnoremap <leader>fr :FlutterHotReload<cr>
+nnoremap <leader>fR :FlutterHotRestart<cr>
+
 """"""""""
 "  Misc  "
 """"""""""
@@ -473,12 +481,6 @@ let g:EditorConfig_exclude_patterns=['fugitive://.*', '\(M\|m\|GNUm\)akefile']
 
 " UltiSnips "
 let g:UltiSnipsExpandTrigger='<C-x>x'
-
-" YouCompleteMe "
-" let g:ycm_key_list_select_completion=['<Down>', '<C-j>']
-" let g:ycm_key_list_previous_completion=['<Up>', '<C-k>']
-" let g:ycm_key_invoke_completion='<C-Space>'
-" let g:ycm_global_ycm_extra_conf='~/.vim/ycm_extra_conf.py'
 
 " airline "
 let g:airline_skip_empty_sections=1
