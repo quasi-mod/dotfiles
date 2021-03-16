@@ -39,7 +39,7 @@ eval "$(pyenv init -)"
 # Golang Paths #
 ################
 export GOROOT=/usr/local/opt/go/libexec
-export GOPATH=~/Documents/src/go
+export GOPATH=~/.go
 export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
 
 ## Basictex

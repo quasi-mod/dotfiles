@@ -160,9 +160,9 @@ setup::plugins_ubuntu() {
 }
 setup::deps() {
   if [[ "$OSTYPE" == "linux-gnu" ]]; then
-    setup::deps_linux()
+    setup::deps_linux
   elif [[ "$OSTYPE" == "darwin"* ]]; then
-    setup::deps_mac()
+    setup::deps_mac
   else
   fi
 }
@@ -172,13 +172,13 @@ setup::pyenv() {
 }
 
 setup::deps_linux(){
-  setup::plugins_ubuntu()
-  setup::pyenv()
+  setup::plugins_ubuntu
+  setup::pyenv
   go get -u github.com/justjanne/powerline-go
 }
 
 setup::deps_mac() {
-  setup::plugins_mac()
+  setup::plugins_mac
 }
 ######################
 #  helper functions  #
